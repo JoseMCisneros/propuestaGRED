@@ -39,10 +39,6 @@
     console.log(error);
   });
 
-  firebase.auth().onAuthStateChanged(function (user) {
-    user ? handleSignedInUser(user) : handleSignedOutUser();
-  });
-
   document.getElementById('sign-out').addEventListener('click', function () {
     firebase.auth().signOut();
   });
