@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
@@ -19,125 +19,161 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
+<script type="text/javascript">
+  initApp = function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var photoURL = user.photoURL;
+        var uid = user.uid;
+      }
+    }, function (error) {
+      console.log(error);
+    });
+  };
+  document.getElementById('Name').innerHTML = displayName;
+  document.getElementById('Email').innerHTML = email;
+  document.getElementById('UserID').innerHTML = uid;
+  document.getElementById('Photo').src = photoURL;
+</script>
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-/* Set a style for all buttons */
-button {
-  background-color: #0079C7;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+    /* Set a style for all buttons */
+    button {
+      background-color: #0079C7;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
 
-button:hover {
-  opacity: 0.8;
-}
-input {
-  background-color: #0079C7;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+    button:hover {
+      opacity: 0.8;
+    }
 
-input:hover {
-  opacity: 0.8;
-}
+    input {
+      background-color: #0079C7;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+    input:hover {
+      opacity: 0.8;
+    }
 
-img.avatar {
-  width: 20%;
-  border-radius: 50%;
-}
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
 
-.container {
-  padding: 16px;
-}
+    img.avatar {
+      width: 20%;
+      border-radius: 50%;
+    }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+    .container {
+      padding: 16px;
+    }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #3f51b5;
-}
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0)
+      }
 
-li {
-  float: left;
-}
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+    @keyframes animatezoom {
+      from {
+        transform: scale(0)
+      }
 
-li a:hover:not(.active) {
-  background-color: #111;
-}
+      to {
+        transform: scale(1)
+      }
+    }
 
-.active {
-  background-color: #333;
-}
-</style>
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #3f51b5;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #333;
+    }
+  </style>
 </head>
 
 <body>
   <ul>
-  <li><a href="evidencia.html">Evidencia</a></li>
-  <li><a href="archivo.html">Archivo</a></li>
-  <li><a href="reporte.html">Reporte</a></li>
-  <li style="float:right"><a class="active" href="user.html">Cuenta</a></li>
-</ul>
-<center>
-<h1>Cuenta</h1>
-<img src="user.png" alt="Avatar" class="avatar"><br>
-<p>Usuario</p>
-<p>Correo</p>
-<p>IDUsuario</p>
-<button style="width:auto;">LogOut</button>
-</center>
+    <li><a href="evidencia.html">Evidencia</a></li>
+    <li><a href="archivo.html">Archivo</a></li>
+    <li><a href="reporte.html">Reporte</a></li>
+    <li style="float:right"><a class="active" href="user.html">Cuenta</a></li>
+  </ul>
+  <center>
+    <h1>Cuenta</h1>
+    <img id="Photo"/><br>
+    <p id="Name"></p>
+    <p id="Email"></p>
+    <p id="UserID"></p>
+    <button style="width:auto;">LogOut</button>
+  </center>
 </body>
+
 </html>
