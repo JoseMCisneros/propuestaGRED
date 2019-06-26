@@ -23,31 +23,11 @@
   firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
-        var displayName = user.displayName;
-        var email = user.email;
-        var photoURL = user.photoURL;
-        var uid = user.uid;
         document.getElementById('Name').innerHTML = user.displayName;
         document.getElementById('Email').innerHTML = user.email;
         document.getElementById('UserID').innerHTML = user.uid;
         document.getElementById('Photo').src = user.photoURL;
-        document.getElementById('account').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                photoURL: photoURL,
-                uid: uid,
-              }, null, '  ');
       }
-      user.getIdToken().then(function(accessToken) {
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                photoURL: photoURL,
-                uid: uid
-              }, null, '  ');
-            });
-    }, function (error) {
-      console.log(error);
     });
 </script>
 <head>
@@ -185,9 +165,6 @@
     <p id="UserID"></p>
     <button style="width:auto;">LogOut</button>
   </center>
-  <p id="Name"></p>
-  <pre id="account-details"></pre>
-  <pre id="account"></pre>
 </body>
 
 </html>
