@@ -26,13 +26,13 @@
       var displayName = user.displayName;
       var email = user.email;
       var photoURL = user.photoURL;
-      var uid = user.uid;
+      var uid = user.uid; 
 
       user.getIdToken().then(function (accessToken) {
-      document.getElementById('Name').innerHTML = user.displayName;
-      document.getElementById('Email').innerHTML = user.email;
-      document.getElementById('UserID').innerHTML = user.uid;
-      document.getElementById('Photo').src = user.photoURL;
+      document.getElementById('Name').innerHTML = displayName;
+      document.getElementById('Email').innerHTML = email;
+      document.getElementById('UserID').innerHTML = uid;
+      document.getElementById('Photo').src = photoURL;
     });
     }
   }, function (error) {
