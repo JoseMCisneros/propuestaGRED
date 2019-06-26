@@ -26,17 +26,25 @@
       var displayName = user.displayName;
       var email = user.email;
       var photoURL = user.photoURL;
-      var uid = user.uid; 
+      var uid = user.uid;
 
       user.getIdToken().then(function (accessToken) {
-      document.getElementById('Name').innerHTML = displayName;
-      document.getElementById('Email').innerHTML = email;
-      document.getElementById('UserID').innerHTML = uid;
-      document.getElementById('Photo').src = photoURL;
-    });
+        document.getElementById('Name').innerHTML = displayName;
+        document.getElementById('Email').innerHTML = email;
+        document.getElementById('UserID').innerHTML = uid;
+        document.getElementById('Photo').src = photoURL;
+      });
     }
   }, function (error) {
     console.log(error);
+  });
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    user ? handleSignedInUser(user) : handleSignedOutUser();
+  });
+
+  document.getElementById('sign-out').addEventListener('click', function () {
+    firebase.auth().signOut();
   });
 </script>
 
@@ -169,11 +177,11 @@
   </ul>
   <center>
     <h1>Cuenta</h1>
-    <img id="Photo" /><br>
+    <img id="Photo" class="avatar" /><br>
     <p id="Name"></p>
     <p id="Email"></p>
     <p id="UserID"></p>
-    <button style="width:auto;">LogOut</button>
+    <button id="sign-out" style="width:auto;">LogOut</button>
   </center>
 </body>
 
