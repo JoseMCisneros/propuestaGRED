@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<script src="https://www.gstatic.com/firebasejs/6.2.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAYSgL5B6SxmCFSyBQzmwKZfWoaT8CGJTo",
+    authDomain: "proyectoinvestigacion-8458f.firebaseapp.com",
+    databaseURL: "https://proyectoinvestigacion-8458f.firebaseio.com",
+    projectId: "proyectoinvestigacion-8458f",
+    storageBucket: "proyectoinvestigacion-8458f.appspot.com",
+    messagingSenderId: "960028751825",
+    appId: "1:960028751825:web:a8668dfcde680f02"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Set a style for all buttons */
+button {
+  background-color: #0079C7;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+input {
+  background-color: #0079C7;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+input:hover {
+  opacity: 0.8;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 20%;
+}
+
+.container {
+  padding: 16px;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3f51b5;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #333;
+}
+</style>
+</head>
+
+<body>
+  <ul>
+  <li><a href="evidencia.html">Evidencia</a></li>
+  <li><a href="archivo.html">Archivo</a></li>
+  <li><a href="reporte.html">Reporte</a></li>
+  <li style="float:right"><a class="active" href="user.html">Cuenta</a></li>
+</ul>
+
+<body>
+<center>
+<h1>Crear Reporte</h1>
+<img src="reporte.png" alt="Avatar" class="avatar"><br>
+<button style="width:auto;">Generar PDF</button>
+</center>
+</body>
+</html>
