@@ -20,26 +20,21 @@
   firebase.initializeApp(firebaseConfig);
 </script>
 <script type="text/javascript">
-  initApp = function () {
-    firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
-        var displayName = user.displayName;
-        var email = user.email;
-        var photoURL = user.photoURL;
-        var uid = user.uid;
+        // var displayName = user.displayName;
+        // var email = user.email;
+        // var photoURL = user.photoURL;
+        // var uid = user.uid;
+        document.getElementById('Name').innerHTML = user.displayName;
+        document.getElementById('Email').innerHTML = user.email;
+        document.getElementById('UserID').innerHTML = user.uid;
+        document.getElementById('Photo').src = user.photoURL;
       }
     }, function (error) {
       console.log(error);
     });
-  };
-  window.addEventListener('load', function() {
-    initApp();
-  });
-  document.getElementById('Name').innerHTML = displayName;
-  document.getElementById('Email').innerHTML = email;
-  document.getElementById('UserID').innerHTML = uid;
-  document.getElementById('Photo').src = photoURL;
 </script>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
