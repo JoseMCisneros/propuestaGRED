@@ -34,6 +34,9 @@
         document.getElementById('UserID').innerHTML = uid;
         document.getElementById('Photo').src = photoURL;
       });
+    } else {
+      // User is signed out.
+      location.href = "index.html"
     }
   }, function (error) {
     console.log(error);
@@ -41,7 +44,7 @@
 
   function logOut() {
     firebase.auth().signOut().then(function () {
-      location.href="index.html"
+      location.href = "index.html"
     }).catch(function (error) {
       // An error happened.
     });
@@ -92,7 +95,7 @@
     }
 
     img.avatar {
-      width: 15%;
+      width: 10%;
       border-radius: 50%;
     }
 
