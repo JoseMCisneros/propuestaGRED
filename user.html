@@ -33,12 +33,14 @@
       console.log(error);
     });
   };
+  window.addEventListener('load', function() {
+    initApp();
+  });
   document.getElementById('Name').innerHTML = displayName;
   document.getElementById('Email').innerHTML = email;
   document.getElementById('UserID').innerHTML = uid;
   document.getElementById('Photo').src = photoURL;
 </script>
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
