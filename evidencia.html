@@ -21,23 +21,24 @@
   firebase.initializeApp(firebaseConfig);
 
 
-  var uploader = document.getElementById('uploader');
+    var uploader = document.getElementById('uploader');
     var fileButton = document.getElementById('fileButton')
+    var percentage
     fileButton.addEventListener('change', function(e){
-      var file = e.target.files[0];
+      var file = e.target.file[0];
       firebase.storage().ref('images/'+file.name);
       storage.put(file);
       var task = storage.put(file);
       task.on('state_changed', 
         function progress(snapshot){
-          var percentage = (snapshot.bytesTransfered / snapshot.totalBytes) *100;
+          percentage = (snapshot.bytesTransfered / snapshot.totalBytes) *100;
           uploader.value = percentage;
         },
         function error(err){
 
         },
         function complete(){
-          uploader.value = 100;
+          uploader.value = percentage;
         }
         );
     });
@@ -159,7 +160,7 @@ li a:hover:not(.active) {
 <h1>Subir Evidencia</h1>
 <img src="evidencia.png" alt="Avatar" class="avatar"><br>
 <progress value="uploader" max="100" id="uploader">0%</progress><br>
-<input style="width:auto;" value="fileButton" type="file" id="fileButton"accept=".jpg,.png">
+<input style="width:auto;" value="fileButton" type="file" id="fileButton" accept=".jpg,.png">
 </center>
 </body>
 </html>
